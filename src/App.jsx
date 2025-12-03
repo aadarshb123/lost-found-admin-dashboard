@@ -5,13 +5,15 @@ import {
   Package,
   Link2,
   Activity,
-  MapPin
+  MapPin,
+  PlusCircle
 } from 'lucide-react';
 
 import DashboardPage from './pages/DashboardPage';
 import ItemsPage from './pages/ItemsPage';
 import MatchesPage from './pages/MatchesPage';
 import AnalyticsPage from './pages/AnalyticsPage';
+import ReportFoundPage from './pages/ReportFoundPage';
 
 function Sidebar() {
   return (
@@ -48,6 +50,14 @@ function Sidebar() {
           </NavLink>
         </div>
 
+        <div className="nav-section">
+          <div className="nav-section-title">Staff Actions</div>
+          <NavLink to="/report-found" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
+            <PlusCircle size={20} />
+            Report Found Item
+          </NavLink>
+        </div>
+
       </nav>
     </aside>
   );
@@ -64,6 +74,7 @@ function App() {
             <Route path="/analytics" element={<AnalyticsPage />} />
             <Route path="/items" element={<ItemsPage />} />
             <Route path="/matches" element={<MatchesPage />} />
+            <Route path="/report-found" element={<ReportFoundPage />} />
           </Routes>
         </main>
       </div>

@@ -1,4 +1,5 @@
-const API_BASE = '/api';
+// Use Vercel backend directly (same as mobile app)
+const API_BASE = 'https://lost-and-found-backend-swart.vercel.app/api';
 
 class AdminApiService {
   async fetchJson(endpoint, options = {}) {
@@ -81,6 +82,34 @@ class AdminApiService {
   // Health
   async getDetailedHealth() {
     return this.fetchJson('/admin/health/detailed');
+  }
+
+  // Report Found Item
+  async reportFoundItem(itemData) {
+    return this.fetchJson('/items/found', {
+      method: 'POST',
+      body: JSON.stringify(itemData),
+    });
+  }
+
+  // Upload Image
+  async uploadImage(file) {
+    const formData = new FormData();
+    formData.append('file', file);
+
+    const response = await fetch(`${API_BASE}/upload/image`, {
+      method: 'POST',
+      body: formData,
+      // Note: Don't set Content-Type header - browser will set it with boundary for FormData
+    });
+
+    if (!response.ok) {
+      const error = await response.json().catch(() => ({ detail: 'Image upload failed' }));
+      throw new Error(error.detail || 'Image upload failed');
+    }
+
+    const data = await response.json();
+    return data.photoUrl;
   }
 }
 
