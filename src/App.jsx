@@ -4,7 +4,6 @@ import {
   LayoutDashboard,
   Package,
   Link2,
-  FlaskConical,
   Activity,
   MapPin
 } from 'lucide-react';
@@ -12,7 +11,6 @@ import {
 import DashboardPage from './pages/DashboardPage';
 import ItemsPage from './pages/ItemsPage';
 import MatchesPage from './pages/MatchesPage';
-import ExperimentsPage from './pages/ExperimentsPage';
 import AnalyticsPage from './pages/AnalyticsPage';
 
 function Sidebar() {
@@ -50,13 +48,6 @@ function Sidebar() {
           </NavLink>
         </div>
 
-        <div className="nav-section">
-          <div className="nav-section-title">Testing</div>
-          <NavLink to="/experiments" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
-            <FlaskConical size={20} />
-            A/B Tests
-          </NavLink>
-        </div>
       </nav>
     </aside>
   );
@@ -73,7 +64,6 @@ function App() {
             <Route path="/analytics" element={<AnalyticsPage />} />
             <Route path="/items" element={<ItemsPage />} />
             <Route path="/matches" element={<MatchesPage />} />
-            <Route path="/experiments" element={<ExperimentsPage />} />
           </Routes>
         </main>
       </div>

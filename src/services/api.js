@@ -78,33 +78,6 @@ class AdminApiService {
     });
   }
 
-  // Experiments
-  async getExperiments() {
-    return this.fetchJson('/admin/experiments');
-  }
-
-  async createExperiment(experiment) {
-    return this.fetchJson('/admin/experiments', {
-      method: 'POST',
-      body: JSON.stringify(experiment),
-    });
-  }
-
-  async getExperiment(experimentId) {
-    return this.fetchJson(`/admin/experiments/${experimentId}`);
-  }
-
-  async updateExperiment(experimentId, update) {
-    return this.fetchJson(`/admin/experiments/${experimentId}`, {
-      method: 'PUT',
-      body: JSON.stringify(update),
-    });
-  }
-
-  async getExperimentResults(experimentId) {
-    return this.fetchJson(`/admin/experiments/${experimentId}/results`);
-  }
-
   // Health
   async getDetailedHealth() {
     return this.fetchJson('/admin/health/detailed');
